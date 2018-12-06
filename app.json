@@ -1,0 +1,27 @@
+{
+  "id": "0dbdd88b-bed4-44f3-8d55-165ef078bb7d",
+  "name": "Kursus",
+  "publisher": "Default publisher",
+  "brief": "Kursusmateriale",
+  "description": "Dette er en test",
+  "version": "1.0.0.0",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "capabilities": [],
+  "dependencies": [],
+  "screenshots": [],
+  "platform": "13.0.0.0",
+  "application": "13.0.0.0",
+  "idRange": {
+    "from": 50100,
+    "to": 50149
+  },
+  "runtime": "2.1",
+  "showMyCode": true,
+  "features": ["TranslationFile"],
+  "target": "Internal"
+  
+}
