@@ -7,20 +7,24 @@ table 50100 "CSD Seminar Setup"
     {
         field(10; "Primary Key"; Code[10])
         {
+            DataClassification=SystemMetadata;
             Caption = 'Primary Key';
         }
         field(20; "Seminar Nos."; Code[20])
         {
+            DataClassification=CustomerContent;
             Caption = 'Seminar Nos.';
             TableRelation = "No. Series";
         }
         field(30; "Seminar Registration Nos."; Code[20])
         {
+            DataClassification=CustomerContent;
             Caption = 'Seminar Registration Nos.';
             TableRelation = "No. Series";
         }
         field(40; "Posted Seminar Reg. Nos."; Code[20])
         {
+            DataClassification=CustomerContent;
             Caption = 'Posted Seminar Reg. Nos.';
             TableRelation = "No. Series";
         }

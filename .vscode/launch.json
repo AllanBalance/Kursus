@@ -6,9 +6,10 @@
             "request": "launch",
             "name": "localhost",
             "server": "http://localhost",
-            "serverInstance": "DynamicsNAV130",
+            "serverInstance": "BC140",
             "authentication": "Windows",
-            "breakOnError": true
+            "breakOnError": true,
+            "schemaUpdateMode": "ForceSync"
         }
     ]
 }

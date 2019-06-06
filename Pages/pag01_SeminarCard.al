@@ -95,8 +95,8 @@ page 50101 "CSD Seminar Card"
                     PromotedIsBig = true;
                     PromotedOnly = true;
                     Caption = 'Seminar Comment sheet';
-                    //RunObject = page ""
-                    //RunPageLink =
+                    RunObject = page "CSD Seminar Comment Sheet";
+                    RunPageLink = "Table name" = const(Seminar),"No."=field("No.");
                 }
             }
         }

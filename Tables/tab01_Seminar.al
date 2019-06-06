@@ -7,6 +7,7 @@ table 50101 "CSD Seminar"
     {
         field(10; "No."; Code[20])
         {
+            DataClassification=CustomerContent;
             Caption = 'No.';
             trigger OnValidate()
             begin
@@ -16,9 +17,11 @@ table 50101 "CSD Seminar"
                     "No. Series" := '';
                 end;
             end;
+            
         }
         field(20; "Name"; Text[50])
         {
+            DataClassification=CustomerContent;
             Caption = 'Name';
             trigger OnValidate()
             begin
@@ -29,27 +32,33 @@ table 50101 "CSD Seminar"
         }
         field(30; "Seminar Duration"; Decimal)
         {
+            DataClassification=CustomerContent;
             Caption = 'Seminar Duration';
             DecimalPlaces = 0 : 1;
         }
         field(40; "Minimum Participants"; Integer)
         {
+            DataClassification=CustomerContent;
             Caption = 'Minimum Participants';
         }
         field(50; "Maximum Participants"; Integer)
         {
+            DataClassification=CustomerContent;
             Caption = 'Maximum Participants';
         }
         field(60; "Search Name"; Code[50])
         {
+            DataClassification=CustomerContent;
             Caption = 'Search Name';
         }
         field(70; "Blocked"; Boolean)
         {
+            DataClassification=CustomerContent;
             Caption = 'Blocked';
         }
         field(80; "Last Date Modified"; Date)
         {
+            DataClassification=CustomerContent;
             Caption = 'Last Date Modified';
             Editable = false;
         }
@@ -62,11 +71,13 @@ table 50101 "CSD Seminar"
         }
         field(100; "Seminar Price"; Decimal)
         {
+            DataClassification=CustomerContent;
             Caption = 'Seminar Price';
             AutoFormatType = 1;
         }
         field(110; "Gen. Prod. Posting Group"; Code[10])
         {
+            DataClassification=CustomerContent;
             Caption = 'Gen. Prod. Posting Group';
             TableRelation = "Gen. Product Posting Group";
             trigger OnValidate()
@@ -79,11 +90,13 @@ table 50101 "CSD Seminar"
         }
         field(120; "VAT Prod. Posting Group"; Code[10])
         {
+            DataClassification=CustomerContent;
             Caption = 'VAT Prod. Posting Group';
             TableRelation = "VAT Product Posting Group";
         }
         field(130; "No. Series"; Code[10])
         {
+            DataClassification=CustomerContent;
             Caption = 'No. Series';
             Editable = false;
             TableRelation = "No. Series";
@@ -105,6 +118,7 @@ table 50101 "CSD Seminar"
     var
         SeminarSetup: Record "CSD Seminar Setup";
         Seminar: Record "CSD Seminar";
+        CommentLine:Record"CSD Seminar Comment Line";
         GenProdPostGrp: Record "Gen. Product Posting Group";
         NoSeriesMgt: Codeunit "NoSeriesManagement";
 
@@ -125,7 +139,10 @@ table 50101 "CSD Seminar"
 
     trigger OnDelete()
     begin
-
+        CommentLine.Reset();
+        CommentLine.SetRange("Table name",CommentLine."Table name"::Seminar);
+        CommentLine.SetRange("No.","No.");
+        CommentLine.DeleteAll();
     end;
 
     trigger OnRename()
