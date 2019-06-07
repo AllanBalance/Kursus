@@ -96,8 +96,38 @@ page 50101 "CSD Seminar Card"
                     PromotedOnly = true;
                     Caption = 'Seminar Comment sheet';
                     RunObject = page "CSD Seminar Comment Sheet";
-                    RunPageLink = "Table name" = const(Seminar),"No."=field("No.");
+                    RunPageLink = "Table name" = const (Seminar), "No." = field ("No.");
                 }
+                action("Ledger Entries")
+                {
+                    Caption = 'Ledger Entries';
+                    RunObject = page "CSD Seminar Ledger Entries";
+                    RunPageLink = "Seminar No." = field ("No.");
+                    Promoted = true;
+                    ShortcutKey = "Ctrl+F7";
+                    Image = WarrantyLedger;
+                }
+                action("&Registration")
+                {
+                    Caption = '&Registration';
+                    RunObject = page "CSD Seminar Registration List";
+                    RunPageLink = "Seminar No." = field ("No.");
+                    Promoted = true;
+                    PromotedCategory = Process;
+                    Image = Timesheet;
+                }
+            }
+        }
+        area(Processing)
+        {
+            action("Seminar Registration")
+            {
+                Caption = 'Seminar Registration';
+                RunObject = page "CSD Seminar Registration";
+                RunPageLink = "Seminar No." = field ("No.");
+                Image = NewTimesheet;
+                Promoted = true;
+                PromotedCategory = New;
             }
         }
     }
