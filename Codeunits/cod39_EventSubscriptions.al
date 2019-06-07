@@ -11,8 +11,8 @@ codeunit 50139 EventSubscriptions
         ResLedgerEntry."CSD Seminar Registration No." := ResJournalLine."CSD Seminar Registration No.";
     end;
 
-    [EventSubscriber(ObjectType::Page, Page::Navigate, 'OnAfterFindRecords', '', true, true)]
-    local procedure ExtNavigateOnAfterFindRecords(
+    [EventSubscriber(ObjectType::Page, Page::Navigate, 'OnAfterNavigateFindRecords', '', true, true)]
+    local procedure ExtendNavigateOnAfterFindRecords(
         var
           DocumentEntry: Record "Document Entry";
           DocNoFilter: text;
@@ -26,8 +26,7 @@ codeunit 50139 EventSubscriptions
         if PostedSeminarRegHeader.ReadPermission then begin
             PostedSeminarRegHeader.Reset;
             PostedSeminarRegHeader.SetFilter("No.", DocNoFilter);
-            PostedSeminarRegHeader.SetFilter("Posting Date",
-            PostingDateFilter);
+            PostedSeminarRegHeader.SetFilter("Posting Date", PostingDateFilter);
             DocNoOfRecords := PostedSeminarRegHeader.Count;
             With DocumentEntry do begin
                 if DocNoOfRecords = 0 then
@@ -40,8 +39,7 @@ codeunit 50139 EventSubscriptions
                 "Entry No." := NextEntryNo;
                 "Table ID" := Database::"CSD Posted Seminar Reg. Header";
                 "Document Type" := 0;
-                "Table Name" := COPYSTR(PostedSeminarRegHeader.
-                TableCaption, 1, MAXSTRLEN("Table Name"));
+                "Table Name" := COPYSTR(PostedSeminarRegHeader.TableCaption, 1, MAXSTRLEN("Table Name"));
                 "No. of Records" := DocNoOfRecords;
                 Insert;
             end;
@@ -62,16 +60,13 @@ codeunit 50139 EventSubscriptions
             Database::"CSD Posted Seminar Reg. Header":
                 begin
                     PostedSeminarRegHeader.SetFilter("No.", DocNoFilter);
-                    PostedSeminarRegHeader.SetFilter("Posting Date",
-                    PostingDateFilter);
+                    PostedSeminarRegHeader.SetFilter("Posting Date", PostingDateFilter);
                     Page.Run(0, PostedSeminarRegHeader);
                 end;
             Database::"CSD Seminar Ledger Entry":
                 begin
-                    SeminarLedgerEntry.SetFilter("Document No.",
-                    DocNoFilter);
-                    SeminarLedgerEntry.SetFilter("Posting Date",
-                    PostingDateFilter);
+                    SeminarLedgerEntry.SetFilter("Document No.", DocNoFilter);
+                    SeminarLedgerEntry.SetFilter("Posting Date", PostingDateFilter);
                     Page.Run(0, SeminarLedgerEntry);
                 end;
         end;
