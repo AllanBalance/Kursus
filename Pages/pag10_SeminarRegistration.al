@@ -97,10 +97,10 @@ page 50110 "CSD Seminar Registration"
                 {
                 }
             }
-            part(SeminarRegistrationLines;"CSD Seminar Reg. Subpage")
+            part(SeminarRegistrationLines; "CSD Seminar Reg. Subpage")
             {
-                Caption ='Lines';
-                SubPageLink="Document No."=field("No.");
+                Caption = 'Lines';
+                SubPageLink = "Document No." = field ("No.");
             }
         }
         area(factboxes)
@@ -109,10 +109,10 @@ page 50110 "CSD Seminar Registration"
             {
                 SubPageLink = "No." = field ("Seminar No.");
             }
-            part(CustomerDetails;"Customer Details FactBox")
+            part(CustomerDetails; "Customer Details FactBox")
             {
-                Provider=SeminarRegistrationLines;
-                SubPageLink="No."=field("Bill-to Customer No.");
+                Provider = SeminarRegistrationLines;
+                SubPageLink = "No." = field ("Bill-to Customer No.");
             }
             systempart("Links"; Links)
             {
